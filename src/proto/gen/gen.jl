@@ -1,4 +1,4 @@
-DAPR_VERSION = v"1.4.2"
+DAPR_VERSION = v"1.5.1"
 
 using Downloads
 using CodecZlib
@@ -10,8 +10,10 @@ download_url = "https://github.com/dapr/dapr/archive/refs/tags/v$DAPR_VERSION.ta
 
 open(Downloads.download(download_url)) do tar_gz
     tar = GzipDecompressorStream(tar_gz)
-    dir = Tar.extract(tar)
-    proto_dir = joinpath(dir, "dapr-$DAPR_VERSION")
+    tar_dir = joinpath(@__DIR__, "dapr")
+    rm(tar_dir; force=true, recursive=true)
+    Tar.extract(tar, tar_dir)
+    proto_dir = joinpath(@__DIR__, "dapr", "dapr-$DAPR_VERSION")
 
     includes = [
         proto_dir,
@@ -24,40 +26,12 @@ open(Downloads.download(download_url)) do tar_gz
         includes=includes
     )
 
-    gRPCClient.generate(
-        joinpath(proto_dir, "dapr", "proto", "runtime", "v1", "appcallback.proto")
-        ;outdir=joinpath(@__DIR__, "..", "src", "generated", "appcallback"),
-        includes=includes
-    )
-
-    gRPCClient.generate(
-        joinpath(proto_dir, "dapr", "proto", "sentry", "v1", "sentry.proto")
-        ;outdir=joinpath(@__DIR__, "..", "src", "generated", "sentry"),
-        includes=includes
-    )
-
-    gRPCClient.generate(
-        joinpath(proto_dir, "dapr", "proto", "operator", "v1", "operator.proto")
-        ;outdir=joinpath(@__DIR__, "..", "src", "generated", "operator"),
-        includes=includes
-    )
-
-    gRPCClient.generate(
-        joinpath(proto_dir, "dapr", "proto", "placement", "v1", "placement.proto")
-        ;outdir=joinpath(@__DIR__, "..", "src", "generated", "placement"),
-        includes=includes
-    )
-
-    gRPCClient.generate(
-        joinpath(proto_dir, "dapr", "proto", "internals", "v1", "service_invocation.proto")
-        ;outdir=joinpath(@__DIR__, "..", "src", "generated", "service_invocation"),
-        includes=includes
-    )
-
 end
 
 #=
 Following up:
+
+Currently using https://github.com/findmyway/ProtoBuf.jl/commit/cb37852a248bfb9ff781ac35621553c3487bdbb6
 
 1. rename service related module name & filename
 2. Add `using ProtoBuf:google` in each client file

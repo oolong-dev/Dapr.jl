@@ -1,0 +1,4 @@
+name = "DaprHttpClients"
+uuid = "301a0fe6-fc23-498b-8f4e-457b3b2177ab"
+authors = ["Jun Tian <tianjun.cpp@gmail.com>"]
+version = "0.1.0"

@@ -599,6 +599,219 @@ function Base.getproperty(obj::SaveStateRequest, name::Symbol)
     end
 end
 
+mutable struct QueryStateRequest_MetadataEntry <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function QueryStateRequest_MetadataEntry(; kwargs...)
+        obj = new(meta(QueryStateRequest_MetadataEntry), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct QueryStateRequest_MetadataEntry (mapentry)
+const __meta_QueryStateRequest_MetadataEntry = Ref{ProtoMeta}()
+function meta(::Type{QueryStateRequest_MetadataEntry})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_QueryStateRequest_MetadataEntry)
+            __meta_QueryStateRequest_MetadataEntry[] = target = ProtoMeta(QueryStateRequest_MetadataEntry)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :value => AbstractString]
+            meta(target, QueryStateRequest_MetadataEntry, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_QueryStateRequest_MetadataEntry[]
+    end
+end
+function Base.getproperty(obj::QueryStateRequest_MetadataEntry, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct QueryStateRequest <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function QueryStateRequest(; kwargs...)
+        obj = new(meta(QueryStateRequest), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct QueryStateRequest
+const __meta_QueryStateRequest = Ref{ProtoMeta}()
+function meta(::Type{QueryStateRequest})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_QueryStateRequest)
+            __meta_QueryStateRequest[] = target = ProtoMeta(QueryStateRequest)
+            allflds = Pair{Symbol,Union{Type,String}}[:store_name => AbstractString, :query => AbstractString, :metadata => Base.Dict{AbstractString,AbstractString}]
+            meta(target, QueryStateRequest, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_QueryStateRequest[]
+    end
+end
+function Base.getproperty(obj::QueryStateRequest, name::Symbol)
+    if name === :store_name
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :query
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :metadata
+        return (obj.__protobuf_jl_internal_values[name])::Base.Dict{AbstractString,AbstractString}
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct QueryStateItem <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function QueryStateItem(; kwargs...)
+        obj = new(meta(QueryStateItem), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct QueryStateItem
+const __meta_QueryStateItem = Ref{ProtoMeta}()
+function meta(::Type{QueryStateItem})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_QueryStateItem)
+            __meta_QueryStateItem[] = target = ProtoMeta(QueryStateItem)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :data => Vector{UInt8}, :etag => AbstractString, :error => AbstractString]
+            meta(target, QueryStateItem, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_QueryStateItem[]
+    end
+end
+function Base.getproperty(obj::QueryStateItem, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :data
+        return (obj.__protobuf_jl_internal_values[name])::Vector{UInt8}
+    elseif name === :etag
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :error
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct QueryStateResponse_MetadataEntry <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function QueryStateResponse_MetadataEntry(; kwargs...)
+        obj = new(meta(QueryStateResponse_MetadataEntry), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct QueryStateResponse_MetadataEntry (mapentry)
+const __meta_QueryStateResponse_MetadataEntry = Ref{ProtoMeta}()
+function meta(::Type{QueryStateResponse_MetadataEntry})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_QueryStateResponse_MetadataEntry)
+            __meta_QueryStateResponse_MetadataEntry[] = target = ProtoMeta(QueryStateResponse_MetadataEntry)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :value => AbstractString]
+            meta(target, QueryStateResponse_MetadataEntry, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_QueryStateResponse_MetadataEntry[]
+    end
+end
+function Base.getproperty(obj::QueryStateResponse_MetadataEntry, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct QueryStateResponse <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function QueryStateResponse(; kwargs...)
+        obj = new(meta(QueryStateResponse), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct QueryStateResponse
+const __meta_QueryStateResponse = Ref{ProtoMeta}()
+function meta(::Type{QueryStateResponse})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_QueryStateResponse)
+            __meta_QueryStateResponse[] = target = ProtoMeta(QueryStateResponse)
+            allflds = Pair{Symbol,Union{Type,String}}[:results => Base.Vector{QueryStateItem}, :token => AbstractString, :metadata => Base.Dict{AbstractString,AbstractString}]
+            meta(target, QueryStateResponse, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_QueryStateResponse[]
+    end
+end
+function Base.getproperty(obj::QueryStateResponse, name::Symbol)
+    if name === :results
+        return (obj.__protobuf_jl_internal_values[name])::Base.Vector{QueryStateItem}
+    elseif name === :token
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :metadata
+        return (obj.__protobuf_jl_internal_values[name])::Base.Dict{AbstractString,AbstractString}
+    else
+        getfield(obj, name)
+    end
+end
+
 mutable struct PublishEventRequest_MetadataEntry <: ProtoType
     __protobuf_jl_internal_meta::ProtoMeta
     __protobuf_jl_internal_values::Dict{Symbol,Any}
@@ -2039,29 +2252,278 @@ function Base.getproperty(obj::SetMetadataRequest, name::Symbol)
     end
 end
 
+mutable struct GetConfigurationRequest_MetadataEntry <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function GetConfigurationRequest_MetadataEntry(; kwargs...)
+        obj = new(meta(GetConfigurationRequest_MetadataEntry), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct GetConfigurationRequest_MetadataEntry (mapentry)
+const __meta_GetConfigurationRequest_MetadataEntry = Ref{ProtoMeta}()
+function meta(::Type{GetConfigurationRequest_MetadataEntry})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_GetConfigurationRequest_MetadataEntry)
+            __meta_GetConfigurationRequest_MetadataEntry[] = target = ProtoMeta(GetConfigurationRequest_MetadataEntry)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :value => AbstractString]
+            meta(target, GetConfigurationRequest_MetadataEntry, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_GetConfigurationRequest_MetadataEntry[]
+    end
+end
+function Base.getproperty(obj::GetConfigurationRequest_MetadataEntry, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct GetConfigurationRequest <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function GetConfigurationRequest(; kwargs...)
+        obj = new(meta(GetConfigurationRequest), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct GetConfigurationRequest
+const __meta_GetConfigurationRequest = Ref{ProtoMeta}()
+function meta(::Type{GetConfigurationRequest})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_GetConfigurationRequest)
+            __meta_GetConfigurationRequest[] = target = ProtoMeta(GetConfigurationRequest)
+            allflds = Pair{Symbol,Union{Type,String}}[:store_name => AbstractString, :keys => Base.Vector{AbstractString}, :metadata => Base.Dict{AbstractString,AbstractString}]
+            meta(target, GetConfigurationRequest, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_GetConfigurationRequest[]
+    end
+end
+function Base.getproperty(obj::GetConfigurationRequest, name::Symbol)
+    if name === :store_name
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :keys
+        return (obj.__protobuf_jl_internal_values[name])::Base.Vector{AbstractString}
+    elseif name === :metadata
+        return (obj.__protobuf_jl_internal_values[name])::Base.Dict{AbstractString,AbstractString}
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct GetConfigurationResponse <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function GetConfigurationResponse(; kwargs...)
+        obj = new(meta(GetConfigurationResponse), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct GetConfigurationResponse
+const __meta_GetConfigurationResponse = Ref{ProtoMeta}()
+function meta(::Type{GetConfigurationResponse})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_GetConfigurationResponse)
+            __meta_GetConfigurationResponse[] = target = ProtoMeta(GetConfigurationResponse)
+            allflds = Pair{Symbol,Union{Type,String}}[:items => Base.Vector{dapr.proto.common.v1.ConfigurationItem}]
+            meta(target, GetConfigurationResponse, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_GetConfigurationResponse[]
+    end
+end
+function Base.getproperty(obj::GetConfigurationResponse, name::Symbol)
+    if name === :items
+        return (obj.__protobuf_jl_internal_values[name])::Base.Vector{dapr.proto.common.v1.ConfigurationItem}
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct SubscribeConfigurationRequest_MetadataEntry <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function SubscribeConfigurationRequest_MetadataEntry(; kwargs...)
+        obj = new(meta(SubscribeConfigurationRequest_MetadataEntry), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct SubscribeConfigurationRequest_MetadataEntry (mapentry)
+const __meta_SubscribeConfigurationRequest_MetadataEntry = Ref{ProtoMeta}()
+function meta(::Type{SubscribeConfigurationRequest_MetadataEntry})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_SubscribeConfigurationRequest_MetadataEntry)
+            __meta_SubscribeConfigurationRequest_MetadataEntry[] = target = ProtoMeta(SubscribeConfigurationRequest_MetadataEntry)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :value => AbstractString]
+            meta(target, SubscribeConfigurationRequest_MetadataEntry, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_SubscribeConfigurationRequest_MetadataEntry[]
+    end
+end
+function Base.getproperty(obj::SubscribeConfigurationRequest_MetadataEntry, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct SubscribeConfigurationRequest <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function SubscribeConfigurationRequest(; kwargs...)
+        obj = new(meta(SubscribeConfigurationRequest), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct SubscribeConfigurationRequest
+const __meta_SubscribeConfigurationRequest = Ref{ProtoMeta}()
+function meta(::Type{SubscribeConfigurationRequest})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_SubscribeConfigurationRequest)
+            __meta_SubscribeConfigurationRequest[] = target = ProtoMeta(SubscribeConfigurationRequest)
+            allflds = Pair{Symbol,Union{Type,String}}[:store_name => AbstractString, :keys => Base.Vector{AbstractString}, :metadata => Base.Dict{AbstractString,AbstractString}]
+            meta(target, SubscribeConfigurationRequest, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_SubscribeConfigurationRequest[]
+    end
+end
+function Base.getproperty(obj::SubscribeConfigurationRequest, name::Symbol)
+    if name === :store_name
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :keys
+        return (obj.__protobuf_jl_internal_values[name])::Base.Vector{AbstractString}
+    elseif name === :metadata
+        return (obj.__protobuf_jl_internal_values[name])::Base.Dict{AbstractString,AbstractString}
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct SubscribeConfigurationResponse <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function SubscribeConfigurationResponse(; kwargs...)
+        obj = new(meta(SubscribeConfigurationResponse), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct SubscribeConfigurationResponse
+const __meta_SubscribeConfigurationResponse = Ref{ProtoMeta}()
+function meta(::Type{SubscribeConfigurationResponse})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_SubscribeConfigurationResponse)
+            __meta_SubscribeConfigurationResponse[] = target = ProtoMeta(SubscribeConfigurationResponse)
+            allflds = Pair{Symbol,Union{Type,String}}[:items => Base.Vector{dapr.proto.common.v1.ConfigurationItem}]
+            meta(target, SubscribeConfigurationResponse, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_SubscribeConfigurationResponse[]
+    end
+end
+function Base.getproperty(obj::SubscribeConfigurationResponse, name::Symbol)
+    if name === :items
+        return (obj.__protobuf_jl_internal_values[name])::Base.Vector{dapr.proto.common.v1.ConfigurationItem}
+    else
+        getfield(obj, name)
+    end
+end
+
 # service methods for Dapr
 const _Dapr_methods = MethodDescriptor[
         MethodDescriptor("InvokeService", 1, InvokeServiceRequest, dapr.proto.common.v1.InvokeResponse),
         MethodDescriptor("GetState", 2, GetStateRequest, GetStateResponse),
         MethodDescriptor("GetBulkState", 3, GetBulkStateRequest, GetBulkStateResponse),
         MethodDescriptor("SaveState", 4, SaveStateRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("DeleteState", 5, DeleteStateRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("DeleteBulkState", 6, DeleteBulkStateRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("ExecuteStateTransaction", 7, ExecuteStateTransactionRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("PublishEvent", 8, PublishEventRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("InvokeBinding", 9, InvokeBindingRequest, InvokeBindingResponse),
-        MethodDescriptor("GetSecret", 10, GetSecretRequest, GetSecretResponse),
-        MethodDescriptor("GetBulkSecret", 11, GetBulkSecretRequest, GetBulkSecretResponse),
-        MethodDescriptor("RegisterActorTimer", 12, RegisterActorTimerRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("UnregisterActorTimer", 13, UnregisterActorTimerRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("RegisterActorReminder", 14, RegisterActorReminderRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("UnregisterActorReminder", 15, UnregisterActorReminderRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("GetActorState", 16, GetActorStateRequest, GetActorStateResponse),
-        MethodDescriptor("ExecuteActorStateTransaction", 17, ExecuteActorStateTransactionRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("InvokeActor", 18, InvokeActorRequest, InvokeActorResponse),
-        MethodDescriptor("GetMetadata", 19, ProtoBuf.google.protobuf.Empty, GetMetadataResponse),
-        MethodDescriptor("SetMetadata", 20, SetMetadataRequest, ProtoBuf.google.protobuf.Empty),
-        MethodDescriptor("Shutdown", 21, ProtoBuf.google.protobuf.Empty, ProtoBuf.google.protobuf.Empty)
+        MethodDescriptor("QueryStateAlpha1", 5, QueryStateRequest, QueryStateResponse),
+        MethodDescriptor("DeleteState", 6, DeleteStateRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("DeleteBulkState", 7, DeleteBulkStateRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("ExecuteStateTransaction", 8, ExecuteStateTransactionRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("PublishEvent", 9, PublishEventRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("InvokeBinding", 10, InvokeBindingRequest, InvokeBindingResponse),
+        MethodDescriptor("GetSecret", 11, GetSecretRequest, GetSecretResponse),
+        MethodDescriptor("GetBulkSecret", 12, GetBulkSecretRequest, GetBulkSecretResponse),
+        MethodDescriptor("RegisterActorTimer", 13, RegisterActorTimerRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("UnregisterActorTimer", 14, UnregisterActorTimerRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("RegisterActorReminder", 15, RegisterActorReminderRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("UnregisterActorReminder", 16, UnregisterActorReminderRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("GetActorState", 17, GetActorStateRequest, GetActorStateResponse),
+        MethodDescriptor("ExecuteActorStateTransaction", 18, ExecuteActorStateTransactionRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("InvokeActor", 19, InvokeActorRequest, InvokeActorResponse),
+        MethodDescriptor("GetConfigurationAlpha1", 20, GetConfigurationRequest, GetConfigurationResponse),
+        MethodDescriptor("SubscribeConfigurationAlpha1", 21, SubscribeConfigurationRequest, Channel{SubscribeConfigurationResponse}),
+        MethodDescriptor("GetMetadata", 22, ProtoBuf.google.protobuf.Empty, GetMetadataResponse),
+        MethodDescriptor("SetMetadata", 23, SetMetadataRequest, ProtoBuf.google.protobuf.Empty),
+        MethodDescriptor("Shutdown", 24, ProtoBuf.google.protobuf.Empty, ProtoBuf.google.protobuf.Empty)
     ] # const _Dapr_methods
 const _Dapr_desc = ServiceDescriptor("dapr.proto.runtime.v1.Dapr", 1, _Dapr_methods)
 
@@ -2089,56 +2551,65 @@ GetBulkState(stub::DaprBlockingStub, controller::ProtoRpcController, inp::GetBul
 SaveState(stub::DaprStub, controller::ProtoRpcController, inp::SaveStateRequest, done::Function) = call_method(stub.impl, _Dapr_methods[4], controller, inp, done)
 SaveState(stub::DaprBlockingStub, controller::ProtoRpcController, inp::SaveStateRequest) = call_method(stub.impl, _Dapr_methods[4], controller, inp)
 
-DeleteState(stub::DaprStub, controller::ProtoRpcController, inp::DeleteStateRequest, done::Function) = call_method(stub.impl, _Dapr_methods[5], controller, inp, done)
-DeleteState(stub::DaprBlockingStub, controller::ProtoRpcController, inp::DeleteStateRequest) = call_method(stub.impl, _Dapr_methods[5], controller, inp)
+QueryStateAlpha1(stub::DaprStub, controller::ProtoRpcController, inp::QueryStateRequest, done::Function) = call_method(stub.impl, _Dapr_methods[5], controller, inp, done)
+QueryStateAlpha1(stub::DaprBlockingStub, controller::ProtoRpcController, inp::QueryStateRequest) = call_method(stub.impl, _Dapr_methods[5], controller, inp)
 
-DeleteBulkState(stub::DaprStub, controller::ProtoRpcController, inp::DeleteBulkStateRequest, done::Function) = call_method(stub.impl, _Dapr_methods[6], controller, inp, done)
-DeleteBulkState(stub::DaprBlockingStub, controller::ProtoRpcController, inp::DeleteBulkStateRequest) = call_method(stub.impl, _Dapr_methods[6], controller, inp)
+DeleteState(stub::DaprStub, controller::ProtoRpcController, inp::DeleteStateRequest, done::Function) = call_method(stub.impl, _Dapr_methods[6], controller, inp, done)
+DeleteState(stub::DaprBlockingStub, controller::ProtoRpcController, inp::DeleteStateRequest) = call_method(stub.impl, _Dapr_methods[6], controller, inp)
 
-ExecuteStateTransaction(stub::DaprStub, controller::ProtoRpcController, inp::ExecuteStateTransactionRequest, done::Function) = call_method(stub.impl, _Dapr_methods[7], controller, inp, done)
-ExecuteStateTransaction(stub::DaprBlockingStub, controller::ProtoRpcController, inp::ExecuteStateTransactionRequest) = call_method(stub.impl, _Dapr_methods[7], controller, inp)
+DeleteBulkState(stub::DaprStub, controller::ProtoRpcController, inp::DeleteBulkStateRequest, done::Function) = call_method(stub.impl, _Dapr_methods[7], controller, inp, done)
+DeleteBulkState(stub::DaprBlockingStub, controller::ProtoRpcController, inp::DeleteBulkStateRequest) = call_method(stub.impl, _Dapr_methods[7], controller, inp)
 
-PublishEvent(stub::DaprStub, controller::ProtoRpcController, inp::PublishEventRequest, done::Function) = call_method(stub.impl, _Dapr_methods[8], controller, inp, done)
-PublishEvent(stub::DaprBlockingStub, controller::ProtoRpcController, inp::PublishEventRequest) = call_method(stub.impl, _Dapr_methods[8], controller, inp)
+ExecuteStateTransaction(stub::DaprStub, controller::ProtoRpcController, inp::ExecuteStateTransactionRequest, done::Function) = call_method(stub.impl, _Dapr_methods[8], controller, inp, done)
+ExecuteStateTransaction(stub::DaprBlockingStub, controller::ProtoRpcController, inp::ExecuteStateTransactionRequest) = call_method(stub.impl, _Dapr_methods[8], controller, inp)
 
-InvokeBinding(stub::DaprStub, controller::ProtoRpcController, inp::InvokeBindingRequest, done::Function) = call_method(stub.impl, _Dapr_methods[9], controller, inp, done)
-InvokeBinding(stub::DaprBlockingStub, controller::ProtoRpcController, inp::InvokeBindingRequest) = call_method(stub.impl, _Dapr_methods[9], controller, inp)
+PublishEvent(stub::DaprStub, controller::ProtoRpcController, inp::PublishEventRequest, done::Function) = call_method(stub.impl, _Dapr_methods[9], controller, inp, done)
+PublishEvent(stub::DaprBlockingStub, controller::ProtoRpcController, inp::PublishEventRequest) = call_method(stub.impl, _Dapr_methods[9], controller, inp)
 
-GetSecret(stub::DaprStub, controller::ProtoRpcController, inp::GetSecretRequest, done::Function) = call_method(stub.impl, _Dapr_methods[10], controller, inp, done)
-GetSecret(stub::DaprBlockingStub, controller::ProtoRpcController, inp::GetSecretRequest) = call_method(stub.impl, _Dapr_methods[10], controller, inp)
+InvokeBinding(stub::DaprStub, controller::ProtoRpcController, inp::InvokeBindingRequest, done::Function) = call_method(stub.impl, _Dapr_methods[10], controller, inp, done)
+InvokeBinding(stub::DaprBlockingStub, controller::ProtoRpcController, inp::InvokeBindingRequest) = call_method(stub.impl, _Dapr_methods[10], controller, inp)
 
-GetBulkSecret(stub::DaprStub, controller::ProtoRpcController, inp::GetBulkSecretRequest, done::Function) = call_method(stub.impl, _Dapr_methods[11], controller, inp, done)
-GetBulkSecret(stub::DaprBlockingStub, controller::ProtoRpcController, inp::GetBulkSecretRequest) = call_method(stub.impl, _Dapr_methods[11], controller, inp)
+GetSecret(stub::DaprStub, controller::ProtoRpcController, inp::GetSecretRequest, done::Function) = call_method(stub.impl, _Dapr_methods[11], controller, inp, done)
+GetSecret(stub::DaprBlockingStub, controller::ProtoRpcController, inp::GetSecretRequest) = call_method(stub.impl, _Dapr_methods[11], controller, inp)
 
-RegisterActorTimer(stub::DaprStub, controller::ProtoRpcController, inp::RegisterActorTimerRequest, done::Function) = call_method(stub.impl, _Dapr_methods[12], controller, inp, done)
-RegisterActorTimer(stub::DaprBlockingStub, controller::ProtoRpcController, inp::RegisterActorTimerRequest) = call_method(stub.impl, _Dapr_methods[12], controller, inp)
+GetBulkSecret(stub::DaprStub, controller::ProtoRpcController, inp::GetBulkSecretRequest, done::Function) = call_method(stub.impl, _Dapr_methods[12], controller, inp, done)
+GetBulkSecret(stub::DaprBlockingStub, controller::ProtoRpcController, inp::GetBulkSecretRequest) = call_method(stub.impl, _Dapr_methods[12], controller, inp)
 
-UnregisterActorTimer(stub::DaprStub, controller::ProtoRpcController, inp::UnregisterActorTimerRequest, done::Function) = call_method(stub.impl, _Dapr_methods[13], controller, inp, done)
-UnregisterActorTimer(stub::DaprBlockingStub, controller::ProtoRpcController, inp::UnregisterActorTimerRequest) = call_method(stub.impl, _Dapr_methods[13], controller, inp)
+RegisterActorTimer(stub::DaprStub, controller::ProtoRpcController, inp::RegisterActorTimerRequest, done::Function) = call_method(stub.impl, _Dapr_methods[13], controller, inp, done)
+RegisterActorTimer(stub::DaprBlockingStub, controller::ProtoRpcController, inp::RegisterActorTimerRequest) = call_method(stub.impl, _Dapr_methods[13], controller, inp)
 
-RegisterActorReminder(stub::DaprStub, controller::ProtoRpcController, inp::RegisterActorReminderRequest, done::Function) = call_method(stub.impl, _Dapr_methods[14], controller, inp, done)
-RegisterActorReminder(stub::DaprBlockingStub, controller::ProtoRpcController, inp::RegisterActorReminderRequest) = call_method(stub.impl, _Dapr_methods[14], controller, inp)
+UnregisterActorTimer(stub::DaprStub, controller::ProtoRpcController, inp::UnregisterActorTimerRequest, done::Function) = call_method(stub.impl, _Dapr_methods[14], controller, inp, done)
+UnregisterActorTimer(stub::DaprBlockingStub, controller::ProtoRpcController, inp::UnregisterActorTimerRequest) = call_method(stub.impl, _Dapr_methods[14], controller, inp)
 
-UnregisterActorReminder(stub::DaprStub, controller::ProtoRpcController, inp::UnregisterActorReminderRequest, done::Function) = call_method(stub.impl, _Dapr_methods[15], controller, inp, done)
-UnregisterActorReminder(stub::DaprBlockingStub, controller::ProtoRpcController, inp::UnregisterActorReminderRequest) = call_method(stub.impl, _Dapr_methods[15], controller, inp)
+RegisterActorReminder(stub::DaprStub, controller::ProtoRpcController, inp::RegisterActorReminderRequest, done::Function) = call_method(stub.impl, _Dapr_methods[15], controller, inp, done)
+RegisterActorReminder(stub::DaprBlockingStub, controller::ProtoRpcController, inp::RegisterActorReminderRequest) = call_method(stub.impl, _Dapr_methods[15], controller, inp)
 
-GetActorState(stub::DaprStub, controller::ProtoRpcController, inp::GetActorStateRequest, done::Function) = call_method(stub.impl, _Dapr_methods[16], controller, inp, done)
-GetActorState(stub::DaprBlockingStub, controller::ProtoRpcController, inp::GetActorStateRequest) = call_method(stub.impl, _Dapr_methods[16], controller, inp)
+UnregisterActorReminder(stub::DaprStub, controller::ProtoRpcController, inp::UnregisterActorReminderRequest, done::Function) = call_method(stub.impl, _Dapr_methods[16], controller, inp, done)
+UnregisterActorReminder(stub::DaprBlockingStub, controller::ProtoRpcController, inp::UnregisterActorReminderRequest) = call_method(stub.impl, _Dapr_methods[16], controller, inp)
 
-ExecuteActorStateTransaction(stub::DaprStub, controller::ProtoRpcController, inp::ExecuteActorStateTransactionRequest, done::Function) = call_method(stub.impl, _Dapr_methods[17], controller, inp, done)
-ExecuteActorStateTransaction(stub::DaprBlockingStub, controller::ProtoRpcController, inp::ExecuteActorStateTransactionRequest) = call_method(stub.impl, _Dapr_methods[17], controller, inp)
+GetActorState(stub::DaprStub, controller::ProtoRpcController, inp::GetActorStateRequest, done::Function) = call_method(stub.impl, _Dapr_methods[17], controller, inp, done)
+GetActorState(stub::DaprBlockingStub, controller::ProtoRpcController, inp::GetActorStateRequest) = call_method(stub.impl, _Dapr_methods[17], controller, inp)
 
-InvokeActor(stub::DaprStub, controller::ProtoRpcController, inp::InvokeActorRequest, done::Function) = call_method(stub.impl, _Dapr_methods[18], controller, inp, done)
-InvokeActor(stub::DaprBlockingStub, controller::ProtoRpcController, inp::InvokeActorRequest) = call_method(stub.impl, _Dapr_methods[18], controller, inp)
+ExecuteActorStateTransaction(stub::DaprStub, controller::ProtoRpcController, inp::ExecuteActorStateTransactionRequest, done::Function) = call_method(stub.impl, _Dapr_methods[18], controller, inp, done)
+ExecuteActorStateTransaction(stub::DaprBlockingStub, controller::ProtoRpcController, inp::ExecuteActorStateTransactionRequest) = call_method(stub.impl, _Dapr_methods[18], controller, inp)
 
-GetMetadata(stub::DaprStub, controller::ProtoRpcController, inp::ProtoBuf.google.protobuf.Empty, done::Function) = call_method(stub.impl, _Dapr_methods[19], controller, inp, done)
-GetMetadata(stub::DaprBlockingStub, controller::ProtoRpcController, inp::ProtoBuf.google.protobuf.Empty) = call_method(stub.impl, _Dapr_methods[19], controller, inp)
+InvokeActor(stub::DaprStub, controller::ProtoRpcController, inp::InvokeActorRequest, done::Function) = call_method(stub.impl, _Dapr_methods[19], controller, inp, done)
+InvokeActor(stub::DaprBlockingStub, controller::ProtoRpcController, inp::InvokeActorRequest) = call_method(stub.impl, _Dapr_methods[19], controller, inp)
 
-SetMetadata(stub::DaprStub, controller::ProtoRpcController, inp::SetMetadataRequest, done::Function) = call_method(stub.impl, _Dapr_methods[20], controller, inp, done)
-SetMetadata(stub::DaprBlockingStub, controller::ProtoRpcController, inp::SetMetadataRequest) = call_method(stub.impl, _Dapr_methods[20], controller, inp)
+GetConfigurationAlpha1(stub::DaprStub, controller::ProtoRpcController, inp::GetConfigurationRequest, done::Function) = call_method(stub.impl, _Dapr_methods[20], controller, inp, done)
+GetConfigurationAlpha1(stub::DaprBlockingStub, controller::ProtoRpcController, inp::GetConfigurationRequest) = call_method(stub.impl, _Dapr_methods[20], controller, inp)
 
-Shutdown(stub::DaprStub, controller::ProtoRpcController, inp::ProtoBuf.google.protobuf.Empty, done::Function) = call_method(stub.impl, _Dapr_methods[21], controller, inp, done)
-Shutdown(stub::DaprBlockingStub, controller::ProtoRpcController, inp::ProtoBuf.google.protobuf.Empty) = call_method(stub.impl, _Dapr_methods[21], controller, inp)
+SubscribeConfigurationAlpha1(stub::DaprStub, controller::ProtoRpcController, inp::SubscribeConfigurationRequest, done::Function) = call_method(stub.impl, _Dapr_methods[21], controller, inp, done)
+SubscribeConfigurationAlpha1(stub::DaprBlockingStub, controller::ProtoRpcController, inp::SubscribeConfigurationRequest) = call_method(stub.impl, _Dapr_methods[21], controller, inp)
 
-export InvokeServiceRequest, GetStateRequest_MetadataEntry, GetStateRequest, GetBulkStateRequest_MetadataEntry, GetBulkStateRequest, GetBulkStateResponse, BulkStateItem_MetadataEntry, BulkStateItem, GetStateResponse_MetadataEntry, GetStateResponse, DeleteStateRequest_MetadataEntry, DeleteStateRequest, DeleteBulkStateRequest, SaveStateRequest, PublishEventRequest_MetadataEntry, PublishEventRequest, InvokeBindingRequest_MetadataEntry, InvokeBindingRequest, InvokeBindingResponse_MetadataEntry, InvokeBindingResponse, GetSecretRequest_MetadataEntry, GetSecretRequest, GetSecretResponse_DataEntry, GetSecretResponse, GetBulkSecretRequest_MetadataEntry, GetBulkSecretRequest, SecretResponse_SecretsEntry, SecretResponse, GetBulkSecretResponse_DataEntry, GetBulkSecretResponse, TransactionalStateOperation, ExecuteStateTransactionRequest_MetadataEntry, ExecuteStateTransactionRequest, RegisterActorTimerRequest, UnregisterActorTimerRequest, RegisterActorReminderRequest, UnregisterActorReminderRequest, GetActorStateRequest, GetActorStateResponse, ExecuteActorStateTransactionRequest, TransactionalActorStateOperation, InvokeActorRequest, InvokeActorResponse, GetMetadataResponse_ExtendedMetadataEntry, GetMetadataResponse, ActiveActorsCount, RegisteredComponents, SetMetadataRequest, Dapr, DaprStub, DaprBlockingStub, InvokeService, GetState, GetBulkState, SaveState, DeleteState, DeleteBulkState, ExecuteStateTransaction, PublishEvent, InvokeBinding, GetSecret, GetBulkSecret, RegisterActorTimer, UnregisterActorTimer, RegisterActorReminder, UnregisterActorReminder, GetActorState, ExecuteActorStateTransaction, InvokeActor, GetMetadata, SetMetadata, Shutdown
-# mapentries: "SecretResponse_SecretsEntry" => ("AbstractString", "AbstractString"), "GetBulkStateRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "GetBulkSecretRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "BulkStateItem_MetadataEntry" => ("AbstractString", "AbstractString"), "GetStateRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "GetSecretResponse_DataEntry" => ("AbstractString", "AbstractString"), "GetStateResponse_MetadataEntry" => ("AbstractString", "AbstractString"), "PublishEventRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "InvokeBindingRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "InvokeBindingResponse_MetadataEntry" => ("AbstractString", "AbstractString"), "GetSecretRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "ExecuteStateTransactionRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "GetMetadataResponse_ExtendedMetadataEntry" => ("AbstractString", "AbstractString"), "GetBulkSecretResponse_DataEntry" => ("AbstractString", "SecretResponse"), "DeleteStateRequest_MetadataEntry" => ("AbstractString", "AbstractString")
+GetMetadata(stub::DaprStub, controller::ProtoRpcController, inp::ProtoBuf.google.protobuf.Empty, done::Function) = call_method(stub.impl, _Dapr_methods[22], controller, inp, done)
+GetMetadata(stub::DaprBlockingStub, controller::ProtoRpcController, inp::ProtoBuf.google.protobuf.Empty) = call_method(stub.impl, _Dapr_methods[22], controller, inp)
+
+SetMetadata(stub::DaprStub, controller::ProtoRpcController, inp::SetMetadataRequest, done::Function) = call_method(stub.impl, _Dapr_methods[23], controller, inp, done)
+SetMetadata(stub::DaprBlockingStub, controller::ProtoRpcController, inp::SetMetadataRequest) = call_method(stub.impl, _Dapr_methods[23], controller, inp)
+
+Shutdown(stub::DaprStub, controller::ProtoRpcController, inp::ProtoBuf.google.protobuf.Empty, done::Function) = call_method(stub.impl, _Dapr_methods[24], controller, inp, done)
+Shutdown(stub::DaprBlockingStub, controller::ProtoRpcController, inp::ProtoBuf.google.protobuf.Empty) = call_method(stub.impl, _Dapr_methods[24], controller, inp)
+
+export InvokeServiceRequest, GetStateRequest_MetadataEntry, GetStateRequest, GetBulkStateRequest_MetadataEntry, GetBulkStateRequest, GetBulkStateResponse, BulkStateItem_MetadataEntry, BulkStateItem, GetStateResponse_MetadataEntry, GetStateResponse, DeleteStateRequest_MetadataEntry, DeleteStateRequest, DeleteBulkStateRequest, SaveStateRequest, QueryStateRequest_MetadataEntry, QueryStateRequest, QueryStateItem, QueryStateResponse_MetadataEntry, QueryStateResponse, PublishEventRequest_MetadataEntry, PublishEventRequest, InvokeBindingRequest_MetadataEntry, InvokeBindingRequest, InvokeBindingResponse_MetadataEntry, InvokeBindingResponse, GetSecretRequest_MetadataEntry, GetSecretRequest, GetSecretResponse_DataEntry, GetSecretResponse, GetBulkSecretRequest_MetadataEntry, GetBulkSecretRequest, SecretResponse_SecretsEntry, SecretResponse, GetBulkSecretResponse_DataEntry, GetBulkSecretResponse, TransactionalStateOperation, ExecuteStateTransactionRequest_MetadataEntry, ExecuteStateTransactionRequest, RegisterActorTimerRequest, UnregisterActorTimerRequest, RegisterActorReminderRequest, UnregisterActorReminderRequest, GetActorStateRequest, GetActorStateResponse, ExecuteActorStateTransactionRequest, TransactionalActorStateOperation, InvokeActorRequest, InvokeActorResponse, GetMetadataResponse_ExtendedMetadataEntry, GetMetadataResponse, ActiveActorsCount, RegisteredComponents, SetMetadataRequest, GetConfigurationRequest_MetadataEntry, GetConfigurationRequest, GetConfigurationResponse, SubscribeConfigurationRequest_MetadataEntry, SubscribeConfigurationRequest, SubscribeConfigurationResponse, Dapr, DaprStub, DaprBlockingStub, InvokeService, GetState, GetBulkState, SaveState, QueryStateAlpha1, DeleteState, DeleteBulkState, ExecuteStateTransaction, PublishEvent, InvokeBinding, GetSecret, GetBulkSecret, RegisterActorTimer, UnregisterActorTimer, RegisterActorReminder, UnregisterActorReminder, GetActorState, ExecuteActorStateTransaction, InvokeActor, GetConfigurationAlpha1, SubscribeConfigurationAlpha1, GetMetadata, SetMetadata, Shutdown
+# mapentries: "SecretResponse_SecretsEntry" => ("AbstractString", "AbstractString"), "GetBulkStateRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "QueryStateRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "SubscribeConfigurationRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "GetBulkSecretRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "BulkStateItem_MetadataEntry" => ("AbstractString", "AbstractString"), "GetStateRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "GetSecretResponse_DataEntry" => ("AbstractString", "AbstractString"), "QueryStateResponse_MetadataEntry" => ("AbstractString", "AbstractString"), "GetStateResponse_MetadataEntry" => ("AbstractString", "AbstractString"), "PublishEventRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "InvokeBindingRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "InvokeBindingResponse_MetadataEntry" => ("AbstractString", "AbstractString"), "GetSecretRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "ExecuteStateTransactionRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "GetConfigurationRequest_MetadataEntry" => ("AbstractString", "AbstractString"), "GetMetadataResponse_ExtendedMetadataEntry" => ("AbstractString", "AbstractString"), "GetBulkSecretResponse_DataEntry" => ("AbstractString", "SecretResponse"), "DeleteStateRequest_MetadataEntry" => ("AbstractString", "AbstractString")
