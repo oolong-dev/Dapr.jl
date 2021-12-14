@@ -80,6 +80,16 @@ import .dapr.proto.runtime.v1: SaveState
 SaveState(client::DaprBlockingClient, inp::dapr.proto.runtime.v1.SaveStateRequest) = SaveState(client.stub, client.controller, inp)
 SaveState(client::DaprClient, inp::dapr.proto.runtime.v1.SaveStateRequest, done::Function) = SaveState(client.stub, client.controller, inp, done)
 
+import .dapr.proto.runtime.v1: QueryStateAlpha1
+"""
+    QueryStateAlpha1
+
+- input: dapr.proto.runtime.v1.QueryStateRequest
+- output: dapr.proto.runtime.v1.QueryStateResponse
+"""
+QueryStateAlpha1(client::DaprBlockingClient, inp::dapr.proto.runtime.v1.QueryStateRequest) = QueryStateAlpha1(client.stub, client.controller, inp)
+QueryStateAlpha1(client::DaprClient, inp::dapr.proto.runtime.v1.QueryStateRequest, done::Function) = QueryStateAlpha1(client.stub, client.controller, inp, done)
+
 import .dapr.proto.runtime.v1: DeleteState
 """
     DeleteState
@@ -219,6 +229,26 @@ import .dapr.proto.runtime.v1: InvokeActor
 """
 InvokeActor(client::DaprBlockingClient, inp::dapr.proto.runtime.v1.InvokeActorRequest) = InvokeActor(client.stub, client.controller, inp)
 InvokeActor(client::DaprClient, inp::dapr.proto.runtime.v1.InvokeActorRequest, done::Function) = InvokeActor(client.stub, client.controller, inp, done)
+
+import .dapr.proto.runtime.v1: GetConfigurationAlpha1
+"""
+    GetConfigurationAlpha1
+
+- input: dapr.proto.runtime.v1.GetConfigurationRequest
+- output: dapr.proto.runtime.v1.GetConfigurationResponse
+"""
+GetConfigurationAlpha1(client::DaprBlockingClient, inp::dapr.proto.runtime.v1.GetConfigurationRequest) = GetConfigurationAlpha1(client.stub, client.controller, inp)
+GetConfigurationAlpha1(client::DaprClient, inp::dapr.proto.runtime.v1.GetConfigurationRequest, done::Function) = GetConfigurationAlpha1(client.stub, client.controller, inp, done)
+
+import .dapr.proto.runtime.v1: SubscribeConfigurationAlpha1
+"""
+    SubscribeConfigurationAlpha1
+
+- input: dapr.proto.runtime.v1.SubscribeConfigurationRequest
+- output: Channel{dapr.proto.runtime.v1.SubscribeConfigurationResponse}
+"""
+SubscribeConfigurationAlpha1(client::DaprBlockingClient, inp::dapr.proto.runtime.v1.SubscribeConfigurationRequest) = SubscribeConfigurationAlpha1(client.stub, client.controller, inp)
+SubscribeConfigurationAlpha1(client::DaprClient, inp::dapr.proto.runtime.v1.SubscribeConfigurationRequest, done::Function) = SubscribeConfigurationAlpha1(client.stub, client.controller, inp, done)
 
 import .dapr.proto.runtime.v1: GetMetadata
 """

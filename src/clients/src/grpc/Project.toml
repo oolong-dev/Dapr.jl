@@ -1,0 +1,4 @@
+name = "DaprGrpcClients"
+uuid = "85c08607-b290-480c-96ad-8bed81ae3c14"
+authors = ["Jun Tian <tianjun.cpp@gmail.com>"]
+version = "0.1.0"

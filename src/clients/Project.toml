@@ -1,4 +1,4 @@
-name = "DaprClient"
+name = "DaprClients"
 uuid = "f4b2537f-2a16-4095-98fc-a229818e8b13"
 authors = ["Jun Tian <tianjun.cpp@gmail.com>"]
 version = "0.1.0"

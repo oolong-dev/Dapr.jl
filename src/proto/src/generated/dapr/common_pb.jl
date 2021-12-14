@@ -13,6 +13,7 @@ const HTTPExtension_Verb = (;[
     Symbol("CONNECT") => Int32(6),
     Symbol("OPTIONS") => Int32(7),
     Symbol("TRACE") => Int32(8),
+    Symbol("PATCH") => Int32(9),
 ]...)
 
 mutable struct HTTPExtension <: ProtoType
@@ -322,5 +323,91 @@ function Base.getproperty(obj::StateItem, name::Symbol)
     end
 end
 
-export HTTPExtension_Verb, HTTPExtension, InvokeRequest, InvokeResponse, StateItem_MetadataEntry, StateItem, Etag, StateOptions_StateConcurrency, StateOptions_StateConsistency, StateOptions
-# mapentries: "StateItem_MetadataEntry" => ("AbstractString", "AbstractString")
+mutable struct ConfigurationItem_MetadataEntry <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function ConfigurationItem_MetadataEntry(; kwargs...)
+        obj = new(meta(ConfigurationItem_MetadataEntry), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct ConfigurationItem_MetadataEntry (mapentry)
+const __meta_ConfigurationItem_MetadataEntry = Ref{ProtoMeta}()
+function meta(::Type{ConfigurationItem_MetadataEntry})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_ConfigurationItem_MetadataEntry)
+            __meta_ConfigurationItem_MetadataEntry[] = target = ProtoMeta(ConfigurationItem_MetadataEntry)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :value => AbstractString]
+            meta(target, ConfigurationItem_MetadataEntry, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_ConfigurationItem_MetadataEntry[]
+    end
+end
+function Base.getproperty(obj::ConfigurationItem_MetadataEntry, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    else
+        getfield(obj, name)
+    end
+end
+
+mutable struct ConfigurationItem <: ProtoType
+    __protobuf_jl_internal_meta::ProtoMeta
+    __protobuf_jl_internal_values::Dict{Symbol,Any}
+    __protobuf_jl_internal_defaultset::Set{Symbol}
+
+    function ConfigurationItem(; kwargs...)
+        obj = new(meta(ConfigurationItem), Dict{Symbol,Any}(), Set{Symbol}())
+        values = obj.__protobuf_jl_internal_values
+        symdict = obj.__protobuf_jl_internal_meta.symdict
+        for nv in kwargs
+            fldname, fldval = nv
+            fldtype = symdict[fldname].jtyp
+            (fldname in keys(symdict)) || error(string(typeof(obj), " has no field with name ", fldname))
+            if fldval !== nothing
+                values[fldname] = isa(fldval, fldtype) ? fldval : convert(fldtype, fldval)
+            end
+        end
+        obj
+    end
+end # mutable struct ConfigurationItem
+const __meta_ConfigurationItem = Ref{ProtoMeta}()
+function meta(::Type{ConfigurationItem})
+    ProtoBuf.metalock() do
+        if !isassigned(__meta_ConfigurationItem)
+            __meta_ConfigurationItem[] = target = ProtoMeta(ConfigurationItem)
+            allflds = Pair{Symbol,Union{Type,String}}[:key => AbstractString, :value => AbstractString, :version => AbstractString, :metadata => Base.Dict{AbstractString,AbstractString}]
+            meta(target, ConfigurationItem, allflds, ProtoBuf.DEF_REQ, ProtoBuf.DEF_FNUM, ProtoBuf.DEF_VAL, ProtoBuf.DEF_PACK, ProtoBuf.DEF_WTYPES, ProtoBuf.DEF_ONEOFS, ProtoBuf.DEF_ONEOF_NAMES)
+        end
+        __meta_ConfigurationItem[]
+    end
+end
+function Base.getproperty(obj::ConfigurationItem, name::Symbol)
+    if name === :key
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :value
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :version
+        return (obj.__protobuf_jl_internal_values[name])::AbstractString
+    elseif name === :metadata
+        return (obj.__protobuf_jl_internal_values[name])::Base.Dict{AbstractString,AbstractString}
+    else
+        getfield(obj, name)
+    end
+end
+
+export HTTPExtension_Verb, HTTPExtension, InvokeRequest, InvokeResponse, StateItem_MetadataEntry, StateItem, Etag, StateOptions_StateConcurrency, StateOptions_StateConsistency, StateOptions, ConfigurationItem_MetadataEntry, ConfigurationItem
+# mapentries: "StateItem_MetadataEntry" => ("AbstractString", "AbstractString"), "ConfigurationItem_MetadataEntry" => ("AbstractString", "AbstractString")
