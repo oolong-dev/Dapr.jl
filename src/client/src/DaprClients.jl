@@ -1,4 +1,4 @@
-module DaprClient
+module DaprClients
 
 include("http_client.jl")
 
