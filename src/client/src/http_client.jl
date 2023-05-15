@@ -16,7 +16,8 @@ function dapr_api_base(
     "http://$host:$port/$version/"
 end
 
-function send_data(method::String, url::URI, data; headers=HTTP.Headers(), query=nothing, timeout=nothing)
+# TypeError: in keyword argument readtimeout, expected Int64, got a value of type Nothing
+function send_data(method::String, url::URI, data; headers=HTTP.Headers(), query=nothing, timeout::Int=typemax(Int))
     headers = copy(headers)
 
     HTTP.Messages.hasheader(headers, "User-Agent") || push!(headers, "User-Agent" => "dapr-sdk-julia")
@@ -66,7 +67,7 @@ end
 export publish_event
 function publish_event(pubsub_name, topic_name, data; kw...)
     url_base = dapr_api_base()
-    url = "$url_base/publish/$pubsub_name/$topic_name"
+    url = URI("$url_base/publish/$pubsub_name/$topic_name")
     resp = send_data("POST", url, JSON3.write(data); kw...)
     DaprResponse(resp.body, HTTP.headers(resp, "content-type"))
 end
