@@ -1,9 +1,9 @@
 using JSON3
-using URIs: URI, resolvereference
+using URIs: URI
 using HTTP
 
 DAPR_RUNTIME_HOST() = get(ENV, "DAPR_RUNTIME_HOST", "127.0.0.1")
-DAPR_HTTP_PORT() = get(ENV, "DAPR_HTTP_PORT", 3500)
+DAPR_HTTP_PORT() = parse(Int, get(ENV, "DAPR_HTTP_PORT", "3500"))
 DAPR_API_VERSION() = get(ENV, "DAPR_API_VERSION", "v1.0")
 DAPR_API_TOKEN() = get(ENV, "DAPR_API_TOKEN", nothing)
 DAPR_HTTP_TIMEOUT_SECONDS = 60
@@ -16,7 +16,7 @@ function dapr_api_base(
     "http://$host:$port/$version/"
 end
 
-function send_data(method::String, url::URI, data; headers=HTTP.Headers(), query=nothing, timeout=nothing)
+function send_data(method::String, url, data; headers=HTTP.Headers(), query=nothing, timeout=nothing)
     headers = copy(headers)
 
     HTTP.Messages.hasheader(headers, "User-Agent") || push!(headers, "User-Agent" => "dapr-sdk-julia")
@@ -33,13 +33,13 @@ function send_data(method::String, url::URI, data; headers=HTTP.Headers(), query
         headers,
         data;
         query=query,
-        readtimeout=timeout
+        readtimeout=something(timeout, DAPR_HTTP_TIMEOUT_SECONDS)
     )
 end
 
 struct DaprResponse
     data::Union{Vector{UInt8},IO}
-    content_type::String
+    content_type::Union{AbstractString,Vector{<:AbstractString}}
 end
 
 export invoke_method
@@ -71,20 +71,26 @@ function publish_event(pubsub_name, topic_name, data; kw...)
     DaprResponse(resp.body, HTTP.headers(resp, "content-type"))
 end
 
+struct DaprStateResponse
+    key::String
+    data::Any
+    etag::AbstractString
+end
+
 export get_state
 function get_state(store_name, key; kw...)
     url_base = dapr_api_base()
     url = "$url_base/state/$store_name/$key"
     resp = send_data("GET", url, HTTP.nobody; kw...)
-    DaprResponse(resp.body, HTTP.headers(resp, "content-type"))
+    DaprStateResponse(key, resp.body, HTTP.headers(resp, "Etag")[1])
 end
 
 export get_bulk_state
 function get_bulk_state(store_name, ks; parallelism=1, kw...)
     url_base = dapr_api_base()
     url = "$url_base/state/$store_name/bulk"
-    resp = send_data("POST", url, JSON.write(Dict("keys" => ks, "parallelism" => parallelism)); kw...)
-    DaprResponse(resp.body, HTTP.headers(resp, "content-type"))
+    resp = send_data("POST", url, JSON3.write((; keys=ks, parallelism=parallelism)); kw...)
+    JSON3.read(resp.body, Vector{DaprStateResponse})
 end
 
 export delete_state
@@ -99,11 +105,11 @@ export save_state
 function save_state(store_name, key, value, etag=nothing; kw...)
     url_base = dapr_api_base()
     url = "$url_base/state/$store_name"
-    payload = Dict("key" => key, "value" => value)
+    payload = (; key, value)
     if !isnothing(etag)
-        payload["etag"] = etag
+        payload = merge(payload, (; etag))
     end
-    resp = send_data("POST", url, JSON3.write(payload); kw...)
+    resp = send_data("POST", url, JSON3.write([payload]); kw...)
     DaprResponse(resp.body, HTTP.headers(resp, "content-type"))
 end
 
