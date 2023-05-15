@@ -66,7 +66,7 @@ end
 export publish_event
 function publish_event(pubsub_name, topic_name, data; kw...)
     url_base = dapr_api_base()
-    url = "$url_base/publish/$pubsub_name/$topic_name"
+    url = URI("$url_base/publish/$pubsub_name/$topic_name")
     resp = send_data("POST", url, JSON3.write(data); kw...)
     DaprResponse(resp.body, HTTP.headers(resp, "content-type"))
 end
